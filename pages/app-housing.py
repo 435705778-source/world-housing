@@ -1,10 +1,6 @@
 import streamlit as st
 import pandas as pd
 import matplotlib.pyplot as plt
-import seaborn as sns
-
-# 设置 seaborn 主题风格以匹配截图外观
-sns.set_theme(style="darkgrid")
 
 # 1. 标题（请将 [Your Name] 替换为你自己的名字）
 st.title("California Housing Data (1990) by [zyc]")
@@ -59,16 +55,9 @@ elif income_level == "High":
 # 6. 过滤后街区的地图展示
 st.map(df_filtered[['latitude', 'longitude']])
 
-# 7. 地图下方：房屋中位价的直方图（30 个 bins，调整外观使其与截图一致）
+# 7. 地图下方：房屋中位价的直方图（30 个 bins，使用纯 matplotlib 绘制）
 st.subheader("Histogram of Median House Value")
 fig, ax = plt.subplots(figsize=(8, 5))
-sns.histplot(
-    data=df_filtered, 
-    x="median_house_value", 
-    bins=30, 
-    ax=ax, 
-    color="#1f77b4"  # 标准的蓝条颜色
-)
-ax.set_xlabel("")
-ax.set_ylabel("")
+ax.hist(df_filtered["median_house_value"], bins=30, color="#1f77b4", edgecolor='white')
+ax.grid(True, linestyle='--', alpha=0.6)
 st.pyplot(fig)
