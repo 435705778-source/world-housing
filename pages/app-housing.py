@@ -3,7 +3,7 @@ import pandas as pd
 import matplotlib.pyplot as plt
 
 # 1. 标题（请将 [Your Name] 替换为你自己的名字）
-st.title("California Housing Data (1990) by [zyc]")
+st.title("California Housing Data (1990) by [郑仁全]")
 
 # 加载数据函数（使用缓存以提高性能）
 @st.cache_data
